@@ -410,13 +410,17 @@ footer p {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 38px;
-  background: url("/images/menu-top.png") center -74px / 100% 194px no-repeat;
+  height: 30px;
+  margin: 0 6px;
+  overflow: hidden;
+  border-radius: 22px 22px 0 0;
+  background: url("/images/menu-top.png") center -80px / 100% 194px no-repeat;
 }
 .navigation-title span {
   display: block;
-  width: 76%;
+  width: 80%;
   padding: 2px 0;
+  border-radius: 16px 16px 0 0;
   text-align: center;
   color: #eafaff;
   text-transform: uppercase;
@@ -452,6 +456,9 @@ footer p {
   z-index: 2;
   top: 50%;
   transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 36px;
   height: 52px;
   padding: 0;
@@ -528,5 +535,41 @@ footer p {
   }
   .slider-arrow.next {
     right: 10px;
+  }
+}
+
+/* Navigation and download use the same sprite dimensions and text metrics. */
+.nav-link,
+.download-button {
+  width: 100%;
+  max-width: 250px;
+  height: 36px;
+  min-height: 36px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 40px 0 14px;
+  font: 0.95rem/1.35 var(--font);
+}
+.download-button {
+  width: calc(100% - 48px);
+}
+.slider-arrow svg {
+  display: block;
+  flex-shrink: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+@media (max-width: 680px) {
+  .nav-link,
+  .download-button {
+    height: 44px;
+    min-height: 44px;
+  }
+  .slider-arrow svg {
+    width: 20px;
+    height: 20px;
   }
 }
