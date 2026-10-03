@@ -1,0 +1,9 @@
+---
+interface Props { compact?: boolean }
+const { compact = false } = Astro.props;
+---
+<button type="button" class:list={['download-button', { compact }]} disabled aria-describedby="download-status">
+  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5" /></svg>
+  Скачать
+  {!compact && <span class="button-tag">Скоро</span>}
+</button>

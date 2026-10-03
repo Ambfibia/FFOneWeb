@@ -1,0 +1,73 @@
+---
+import '../styles/global.css';
+import DownloadButton from '../components/DownloadButton.astro';
+const navigation = [['home','Главная'],['about','О проекте'],['world','Мир FFOne'],['download','Скачать клиент'],['faq','Вопросы и ответы'],['credits','Об авторах и правах']];
+const questions = [
+ ['Что такое FFOne?','FFOne — независимый фанатский проект по мотивам FusionFall с собственным клиентом и русским интерфейсом.'],
+ ['Можно уже скачать игру?','Пока нет. Когда клиент будет готов к распространению, здесь появится ссылка.'],
+ ['Будет ли русский язык?','Да. В проекте предусмотрены русский интерфейс, задания и диалоги. Английский язык также сохраняется.'],
+ ['Это официальный проект?','Нет. FFOne не связан с Cartoon Network или правообладателями FusionFall.'],
+];
+---
+<!doctype html>
+<html lang="ru">
+<head>
+ <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+ <meta name="theme-color" content="#003b55" />
+ <meta name="description" content="Русский фанатский сайт FFOne: мир FusionFall, информация о проекте и будущая загрузка клиента." />
+ <title>FFOne — фанатский проект FusionFall</title>
+ <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+ <link rel="preload" href="/fonts/jeffe.otf" as="font" type="font/otf" crossorigin />
+</head>
+<body>
+ <a class="skip-link" href="#main">Перейти к содержимому</a>
+ <div class="wrapper">
+  <header class="header"><nav class="top-nav" aria-label="Верхняя навигация"><a href="#home">Главная</a><a href="#about">О проекте</a><a href="#download">Скачать</a><span class="guest">Добро пожаловать!</span><span class="lang">РУС</span></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">Меню</button></header>
+  <div class="columns">
+   <aside class="left-side">
+    <a class="logo-link" href="#home" aria-label="FFOne — главная"><img src="/images/ffone-logo.png" alt="FFOne" width="2058" height="764" /></a>
+    <div class="navigation-panel"><h2 class="panel-title">Навигация</h2><nav id="site-navigation" aria-label="Основная навигация">{navigation.map(([id,label]) => <a href={`#${id}`} class:list={['nav-link',{active:id==='home'}]} aria-current={id==='home'?'page':undefined}>{label}</a>)}</nav><div class="nav-bottom"></div></div>
+    <div class="sidebar-download"><DownloadButton compact /><p>Клиент в разработке</p></div>
+    <div class="sidebar-message"><span>Добро пожаловать в FFOne!</span><p>Знакомый мир.<br />Новое приключение.</p></div>
+   </aside>
+   <main id="main" tabindex="-1">
+    <section class="page-view" data-view="home" aria-label="Главная">
+     <div class="banner-frame"><a class="banner" href="#about"><img src="/images/fusion-city.png" alt="Фантастический город с зелёным энергетическим разломом" width="1672" height="941" fetchpriority="high" /><div class="banner-copy"><span>Фанатский проект FusionFall</span><h1>Добро пожаловать<br />в <em>FFOne!</em></h1><p>Знакомый мир. Новая глава.</p></div><span class="banner-label">О проекте</span></a></div>
+     <div class="home-panels">
+      <section class="content-panel"><h2 class="panel-title">О проекте</h2><div class="panel-body news-list">
+       <article class="news-entry"><a class="news-thumb thumb-logo" href="#about"><img src="/images/ffone-logo.png" alt="" width="2058" height="764" /></a><div><a class="news-title" href="#about">Знакомимся с FFOne</a><p>Возвращаемся в любимую вселенную FusionFall.</p></div></article>
+       <article class="news-entry"><a class="news-thumb" href="#world"><img src="/images/fusion-city.png" alt="" width="1672" height="941" /></a><div><a class="news-title" href="#world">Мир приключений</a><p>Городские улицы и необычные герои снова ждут тебя.</p></div></article>
+       <article class="news-entry"><a class="news-thumb thumb-ru" href="#faq" aria-label="О русском языке">РУ</a><div><a class="news-title" href="#faq">FFOne на русском</a><p>Интерфейс, задания и диалоги на твоём языке.</p></div></article>
+      </div><div class="panel-bottom"></div></section>
+      <section class="content-panel"><h2 class="panel-title">Мир FFOne</h2><div class="panel-body picture-panel"><a href="#world"><img class="world-preview" src="/images/fusion-city.png" alt="Концепт фантастического города FFOne" width="1672" height="941" /></a><p>Большое приключение начинается с тебя. Впереди — знакомая вселенная и новая история.</p><a class="more-link" href="#world">Узнать больше</a><div class="download-notice"><span>Скачать FFOne</span><p>Загрузка откроется позже.</p></div></div><div class="panel-bottom"></div></section>
+     </div>
+    </section>
+    <section class="page-view content-panel full-panel" data-view="about" hidden><h1 class="panel-title">О проекте FFOne</h1><div class="panel-body article-body"><h2>Возвращение в знакомый мир</h2><p>Есть миры, в которые хочется возвращаться. FusionFall — один из них.</p><p>FFOne — независимый фанатский проект с собственным клиентом и русским интерфейсом. Мы сохраняем любимую вселенную и открываем новую главу приключения.</p><img class="article-image" src="/images/fusion-city.png" alt="Концепт города FFOne" width="1672" height="941" /><p>Клиент находится в разработке. Информация о загрузке появится в разделе «Скачать клиент».</p><a class="more-link" href="#download">Скачать клиент</a></div><div class="panel-bottom"></div></section>
+    <section class="page-view content-panel full-panel" data-view="world" hidden><h1 class="panel-title">Мир FFOne</h1><div class="panel-body article-body"><h2>За каждым поворотом — новая история</h2><img class="article-image" src="/images/fusion-city.png" alt="Фантастический город под зелёным энергетическим разломом" width="1672" height="941" /><p>Городские улицы, необычные герои и мир, за который стоит побороться. Вселенная FusionFall снова зовёт в приключение.</p><p class="caption">Концептуальная иллюстрация мира. Не скриншот игрового клиента.</p></div><div class="panel-bottom"></div></section>
+    <section class="page-view content-panel full-panel" data-view="download" hidden><h1 class="panel-title">Скачать клиент</h1><div class="panel-body article-body"><h2>FFOne готовится к выпуску</h2><p id="download-status">Загрузка пока не открыта. Ссылка появится здесь, когда клиент будет готов к распространению.</p><DownloadButton /><p class="caption">Следи за обновлениями сайта.</p></div><div class="panel-bottom"></div></section>
+    <section class="page-view content-panel full-panel" data-view="faq" hidden><h1 class="panel-title">Вопросы и ответы</h1><div class="panel-body article-body">{questions.map(([question,answer]) => <details><summary>{question}</summary><p>{answer}</p></details>)}</div><div class="panel-bottom"></div></section>
+    <section class="page-view content-panel full-panel" data-view="credits" hidden><h1 class="panel-title">Об авторах и правах</h1><div class="panel-body article-body"><h2>Фанатский проект FFOne</h2><p>FFOne — независимый фанатский проект. Он не связан с Cartoon Network или правообладателями FusionFall.</p><p>FusionFall и связанные персонажи принадлежат их правообладателям.</p><p>Оформление основано на <a href="https://web.archive.org/web/20200128183901/https://www.fusionfalllegacy.com/" target="_blank" rel="noreferrer">архивном сайте FusionFall Legacy</a>. Фон лаборатории и декоративные текстуры панелей взяты из этого референса. Логотип FFOne и концепт города созданы отдельно.</p></div><div class="panel-bottom"></div></section>
+    <noscript><style>.page-view[hidden]{display:block!important;margin-top:24px}</style><p>Все разделы доступны ниже.</p></noscript>
+   </main>
+  </div>
+  <footer><div class="footer-links"><a href="#about">О проекте</a><span>|</span><a href="#credits">Об авторах и правах</a></div><p>FFOne — независимый фанатский проект по мотивам FusionFall, не связанный с Cartoon Network.<br />FusionFall и связанные персонажи принадлежат их правообладателям.</p></footer>
+ </div>
+ <script>
+  const views = document.querySelectorAll<HTMLElement>('[data-view]');
+  const links = document.querySelectorAll<HTMLAnchorElement>('.nav-link');
+  const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
+  const nav = document.querySelector<HTMLElement>('#site-navigation');
+  function showPage(focus = false) {
+   const requested = location.hash.slice(1) || 'home';
+   const current = Array.from(views).some(view=>view.dataset.view===requested) ? requested : 'home';
+   views.forEach(view=>view.hidden=view.dataset.view!==current);
+   links.forEach(link=>{const active=link.hash===`#${current}`;link.classList.toggle('active',active);if(active)link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');});
+   nav?.classList.remove('is-open');toggle?.setAttribute('aria-expanded','false');
+   if(focus){document.querySelector<HTMLElement>('#main')?.focus({preventScroll:true});window.scrollTo({top:0});}
+  }
+  toggle?.addEventListener('click',()=>{const expanded=toggle.getAttribute('aria-expanded')!=='true';toggle.setAttribute('aria-expanded',String(expanded));nav?.classList.toggle('is-open',expanded);});
+  document.addEventListener('keydown',event=>{if(event.key==='Escape'){nav?.classList.remove('is-open');toggle?.setAttribute('aria-expanded','false');}});
+  window.addEventListener('hashchange',()=>showPage(true));showPage();
+ </script>
+</body>
+</html>
