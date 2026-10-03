@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import DownloadButton from '../components/DownloadButton.astro';
-const navigation = [['home', 'Главная'], ['credits', 'Об авторах и правах']];
+const navigation = [['credits', 'Авторы и права']];
 const artworks = [
  { src: '/images/retro-heroes.png', alt: 'Герои FusionFall против армии Фьюза — арт FusionFall Retro', width: 1920, height: 620 },
  { src: '/images/legacy-eddy.png', alt: 'Эдди — иллюстрация FusionFall Legacy', width: 620, height: 234 },
@@ -22,11 +22,11 @@ const artworks = [
 <body>
  <a class="skip-link" href="#main">Перейти к содержимому</a>
  <div class="wrapper">
-  <header class="header"><nav class="top-nav" aria-label="Верхняя навигация"><a href="#home">Главная</a><a href="#credits">Об авторах и правах</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">Меню</button></header>
+  <header class="header"><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation">Меню</button></header>
   <div class="columns">
    <aside class="left-side">
     <a class="logo-link" href="#home" aria-label="FFOne — главная"><img src="/images/ffone-logo.png" alt="FFOne" width="2058" height="764" /></a>
-    <div class="navigation-panel"><h2 class="panel-title">Навигация</h2><nav id="site-navigation" aria-label="Основная навигация">{navigation.map(([id,label]) => <a href={`#${id}`} class:list={['nav-link',{active:id==='home'}]} aria-current={id==='home'?'page':undefined}>{label}</a>)}</nav><div class="nav-bottom"></div></div>
+    <div class="navigation-panel"><nav id="site-navigation" aria-label="Основная навигация">{navigation.map(([id,label]) => <a href={`#${id}`} class:list={['nav-link',{active:id==='home'}]} aria-current={id==='home'?'page':undefined}>{label}</a>)}</nav></div>
     <div class="sidebar-download"><DownloadButton compact /><span id="download-status" class="sr-only">Загрузка пока не открыта.</span></div>
    </aside>
    <main id="main" tabindex="-1">
@@ -39,7 +39,7 @@ const artworks = [
     <noscript><style>.page-view[hidden]{display:block!important;margin-top:24px}</style><p>Все разделы доступны ниже.</p></noscript>
    </main>
   </div>
-  <footer><div class="footer-links"><a href="#credits">Об авторах и правах</a></div><p>FFOne — независимый фанатский проект по мотивам FusionFall, не связанный с Cartoon Network.<br />FusionFall и связанные персонажи принадлежат их правообладателям.</p></footer>
+  <footer><p>FFOne — независимый фанатский проект по мотивам FusionFall, не связанный с Cartoon Network.<br />FusionFall и связанные персонажи принадлежат их правообладателям.</p></footer>
  </div>
  <script>
   const artImages = document.querySelectorAll<HTMLImageElement>('.artwork');
