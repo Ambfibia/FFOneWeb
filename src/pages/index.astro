@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import DownloadButton from '../components/DownloadButton.astro';
-const navigation = [['credits', 'Авторы и права']];
+const navigation = [['home', 'Главная'], ['credits', 'Авторы и права']];
 const artworks = [
  { src: '/images/retro-heroes.png', alt: 'Герои FusionFall против армии Фьюза — арт FusionFall Retro', width: 1920, height: 620 },
  { src: '/images/legacy-eddy.png', alt: 'Эдди — иллюстрация FusionFall Legacy', width: 620, height: 234 },
@@ -26,13 +26,13 @@ const artworks = [
   <div class="columns">
    <aside class="left-side">
     <a class="logo-link" href="#home" aria-label="FFOne — главная"><img src="/images/ffone-logo.png" alt="FFOne" width="2058" height="764" /></a>
-    <div class="navigation-panel"><nav id="site-navigation" aria-label="Основная навигация">{navigation.map(([id,label]) => <a href={`#${id}`} class:list={['nav-link',{active:id==='home'}]} aria-current={id==='home'?'page':undefined}>{label}</a>)}</nav></div>
+    <div class="navigation-panel"><h2 class="navigation-title"><span>Навигация</span></h2><nav id="site-navigation" aria-label="Основная навигация">{navigation.map(([id,label]) => <a href={`#${id}`} class:list={['nav-link',{active:id==='home'}]} aria-current={id==='home'?'page':undefined}>{label}</a>)}</nav><div class="navigation-bottom" aria-hidden="true"></div></div>
     <div class="sidebar-download"><DownloadButton compact /><span id="download-status" class="sr-only">Загрузка пока не открыта.</span></div>
    </aside>
    <main id="main" tabindex="-1">
     <section class="page-view" data-view="home" aria-label="Главная">
      <h1 class="sr-only">FFOne — фанатский проект FusionFall</h1>
-     <div class="banner-frame"><div class="artwork-stage">{artworks.map((art, index) => <img class="artwork" src={art.src} alt={art.alt} width={art.width} height={art.height} hidden={index !== 0} fetchpriority={index === 0 ? 'high' : 'auto'} />)}</div></div>
+     <div class="banner-frame"><button type="button" class="slider-arrow previous" aria-label="Предыдущий арт">‹</button><div class="artwork-stage">{artworks.map((art, index) => <img class="artwork" src={art.src} alt={art.alt} width={art.width} height={art.height} hidden={index !== 0} fetchpriority={index === 0 ? 'high' : 'auto'} />)}</div><button type="button" class="slider-arrow next" aria-label="Следующий арт">›</button></div>
      <div class="artwork-controls" role="group" aria-label="Арты FusionFall">{artworks.map((art, index) => <button type="button" data-artwork={index} aria-label={`Показать: ${art.alt}`} aria-pressed={index === 0} class:list={['artwork-dot', { selected: index === 0 }]}></button>)}</div>
     </section>
     <section class="page-view content-panel full-panel" data-view="credits" hidden><h1 class="panel-title">Об авторах и правах</h1><div class="panel-body article-body"><h2>Фанатский проект FFOne</h2><p>FFOne — независимый фанатский проект. Он не связан с Cartoon Network или правообладателями FusionFall.</p><p>FusionFall и связанные персонажи принадлежат их правообладателям.</p><p>Оформление основано на <a href="https://web.archive.org/web/20200128183901/https://www.fusionfalllegacy.com/" target="_blank" rel="noreferrer">архивном сайте FusionFall Legacy</a>. Фон лаборатории и декоративные текстуры панелей взяты из этого референса. Арты: архивные иллюстрации FusionFall Legacy и <a href="https://www.steamgriddb.com/hero/68458" target="_blank" rel="noreferrer">панорамный арт FusionFall Retro (Hayrullah)</a>. Логотип FFOne создан отдельно.</p></div><div class="panel-bottom"></div></section>
@@ -44,10 +44,15 @@ const artworks = [
  <script>
   const artImages = document.querySelectorAll<HTMLImageElement>('.artwork');
   const artButtons = document.querySelectorAll<HTMLButtonElement>('[data-artwork]');
-  artButtons.forEach((button, index) => button.addEventListener('click', () => {
-   artImages.forEach((image, imageIndex) => image.hidden = imageIndex !== index);
-   artButtons.forEach((item, itemIndex) => { item.setAttribute('aria-pressed', String(itemIndex === index)); item.classList.toggle('selected', itemIndex === index); });
-  }));
+  let selectedArt = 0;
+  function selectArt(index: number) {
+   selectedArt = (index + artImages.length) % artImages.length;
+   artImages.forEach((image, imageIndex) => image.hidden = imageIndex !== selectedArt);
+   artButtons.forEach((item, itemIndex) => { item.setAttribute('aria-pressed', String(itemIndex === selectedArt)); item.classList.toggle('selected', itemIndex === selectedArt); });
+  }
+  artButtons.forEach((button, index) => button.addEventListener('click', () => selectArt(index)));
+  document.querySelector('.slider-arrow.previous')?.addEventListener('click', () => selectArt(selectedArt - 1));
+  document.querySelector('.slider-arrow.next')?.addEventListener('click', () => selectArt(selectedArt + 1));
   const views = document.querySelectorAll<HTMLElement>('[data-view]');
   const links = document.querySelectorAll<HTMLAnchorElement>('.nav-link');
   const toggle = document.querySelector<HTMLButtonElement>('.menu-toggle');
