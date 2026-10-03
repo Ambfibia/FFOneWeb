@@ -29,13 +29,14 @@ npm run preview
 - `public/fonts/jeffe.otf` — заменённый JEFF из FFOneClient для заголовков, меню и кнопок.
 - `public/fonts/chaletbook-regular.ttf` — шрифт FFOneClient для основного текста.
 - `public/images/ffone-logo.png` — сгенерированный оригинальный логотип FFOne.
-- `public/images/fusion-city.png` — сгенерированный концептуальный фон, не скриншот игры.
+- `public/images/retro-heroes.png` — панорамный арт FusionFall Retro, опубликованный [Hayrullah на SteamGridDB](https://www.steamgriddb.com/hero/68458).
+- `public/images/legacy-eddy.png`, `legacy-zoocrew.png` — оригинальные баннерные иллюстрации с архивного сайта FusionFall Legacy.
 
-Референс: [FusionFall Legacy, архив от 28 января 2020](https://web.archive.org/web/20200128183901/https://www.fusionfalllegacy.com/). Фон лаборатории, рамка баннера и текстуры панелей перенесены из указанного референса. Исходный логотип FusionFall, CSS и скрипты не используются. Заголовки и меню написаны по-русски заменённым JEFF.
+Референс: [FusionFall Legacy, архив от 28 января 2020](https://web.archive.org/web/20200128183901/https://www.fusionfalllegacy.com/). Фон лаборатории, рамка баннера, исходные спрайты кнопок, фоны навигации и текстуры панелей перенесены из указанного референса. Исходный логотип FusionFall, CSS и скрипты не используются. Заголовки и меню написаны по-русски заменённым JEFF.
 
 Логотип создан встроенным imagegen: «Transparent original FFOne wordmark, exact capitalization, silver-white beveled FF and acid-green One, thick dark outlines, dynamic early-2000s sci-fi cartoon videogame lettering; not the FusionFall logo; no extra text».
 
-Фон города создан встроенным imagegen: «Wide cel-shaded futuristic cartoon videogame city, acid-green skyline portal, navy-purple sky, abandoned plaza; dark quiet left half, city and luminous plasma on right; no text, logos or characters».
+Сгенерированный фон города удалён. Все иллюстрации в баннере — существующие арты FusionFall Legacy/Retro. Отдельный логотип FFOne сохранён по первоначальному запросу.
 
 ## Обновление сервера
 
