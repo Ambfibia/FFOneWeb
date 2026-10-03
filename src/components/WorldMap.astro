@@ -1,0 +1,20 @@
+<section class="page-view content-panel full-panel" data-view="map" hidden>
+ <h1 class="panel-title">Карта мира</h1>
+ <div class="panel-body map-body">
+  <div class="map-toolbar">
+   <label><input id="map-players" type="checkbox" checked /> Игроки</label>
+   <label><input id="map-npcs" type="checkbox" checked /> NPC</label>
+   <button id="map-minus" type="button" aria-label="Уменьшить карту">−</button>
+   <button id="map-plus" type="button" aria-label="Увеличить карту">+</button>
+   <button id="map-reset" type="button">Весь мир</button>
+  </div>
+  <label class="map-search">Найти NPC <input id="map-search" type="search" placeholder="Имя персонажа" autocomplete="off" /></label>
+  <p id="map-status" role="status">Подключаемся к серверу…</p>
+  <canvas id="world-map" width="720" height="540" tabindex="0" aria-label="Карта FusionFall. Перетаскивайте для перемещения; плюс и минус меняют масштаб, стрелки перемещают карту."></canvas>
+  <p id="map-detail" aria-live="polite">Нажмите на метку, чтобы узнать имя. Голубые метки — игроки, жёлтые — NPC.</p>
+ </div>
+ <div class="panel-bottom"></div>
+</section>
+<script>
+ import '../scripts/world-map';
+</script>

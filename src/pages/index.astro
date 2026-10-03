@@ -1,7 +1,8 @@
 ---
 import '../styles/global.css';
 import DownloadButton from '../components/DownloadButton.astro';
-const navigation = [['home', 'Главная'], ['credits', 'Авторы и права']];
+import WorldMap from '../components/WorldMap.astro';
+const navigation = [['home', 'Главная'], ['map', 'Карта'], ['credits', 'Авторы и права']];
 const artworks = [
  { src: '/images/retro-heroes.png', alt: 'Герои FusionFall против армии Фьюза — арт FusionFall Retro', width: 1920, height: 620 },
  { src: '/images/legacy-eddy.png', alt: 'Эдди — иллюстрация FusionFall Legacy', width: 620, height: 234 },
@@ -35,6 +36,7 @@ const artworks = [
      <div class="banner-frame"><button type="button" class="slider-arrow previous" aria-label="Предыдущий арт"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="m15 5-7 7 7 7" /></svg></button><div class="artwork-stage">{artworks.map((art, index) => <img class="artwork" src={art.src} alt={art.alt} width={art.width} height={art.height} hidden={index !== 0} fetchpriority={index === 0 ? 'high' : 'auto'} />)}</div><button type="button" class="slider-arrow next" aria-label="Следующий арт"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="m9 5 7 7-7 7" /></svg></button></div>
      <div class="artwork-controls" role="group" aria-label="Арты FusionFall">{artworks.map((art, index) => <button type="button" data-artwork={index} aria-label={`Показать: ${art.alt}`} aria-pressed={index === 0} class:list={['artwork-dot', { selected: index === 0 }]}></button>)}</div>
     </section>
+    <WorldMap />
     <section class="page-view content-panel full-panel" data-view="credits" hidden><h1 class="panel-title">Об авторах и правах</h1><div class="panel-body article-body"><p>FFOne — независимый фанатский проект. Он не связан с Cartoon Network или правообладателями FusionFall.</p><p>FusionFall и связанные персонажи принадлежат их правообладателям.</p></div><div class="panel-bottom"></div></section>
     <noscript><style>.page-view[hidden]{display:block!important;margin-top:24px}</style><p>Все разделы доступны ниже.</p></noscript>
    </main>

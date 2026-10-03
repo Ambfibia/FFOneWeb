@@ -573,3 +573,50 @@ footer p {
     height: 20px;
   }
 }
+
+/* The sidebar uses Legacy's own navigation strip, not the article frame. */
+@media (min-width: 681px) {
+ .navigation-title {
+  height: 36px;
+  margin: 0;
+  border-radius: 0;
+  align-items: flex-start;
+  overflow: hidden;
+  background: url('/images/menu-top.png') center -76px / 100% auto no-repeat;
+ }
+ .navigation-title span {
+  width: 75%;
+  height: 21px;
+  margin-top: 8px;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  border-image: url('/images/menu-top.png') 85 250 94 40 fill / 0 / 0 stretch;
+  font-size: 1.05rem;
+ }
+ #site-navigation {
+  margin: 0 6px;
+  padding: 0 18px 10px;
+  background: url('/images/menu-middle.png') center top / 100% 3px repeat-y;
+ }
+ .navigation-bottom {
+  height: 10px;
+  background: #020f13;
+  border: 2px solid #08516a;
+  border-top: 0;
+  border-radius: 0 0 10px 10px;
+ }
+}
+.map-body { padding: 18px; }
+.map-toolbar { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.map-toolbar label { white-space: nowrap; }
+.map-toolbar button { border: 1px solid #36b4d5; border-radius: 3px; background: #00354c; color: #eafaff; padding: 5px 10px; cursor: pointer; }
+.map-search { display: flex; align-items: center; gap: 12px; margin-top: 14px; }
+.map-search input { min-width: 0; flex: 1; color: #eafaff; background: #001522; border: 1px solid #33849b; padding: 7px 10px; }
+#map-status, #map-detail { font-size: .9rem; line-height: 1.5; }
+#world-map { display: block; width: 100%; height: auto; border: 1px solid #227f96; touch-action: none; cursor: grab; }
+#world-map:active { cursor: grabbing; }
+@media (min-width: 681px) {
+ .navigation-title { clip-path: polygon(5% 100%, 12% 29%, 16% 21%, 80% 21%, 89% 34%, 96% 100%); }
+ .navigation-title span { background-color: #27687e; }
+}

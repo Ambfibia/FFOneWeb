@@ -16,4 +16,7 @@ cp -a dist/. "$release/"
 chmod -R a+rX "$release"
 ln -s "$release" /var/www/ffone/current.next
 mv -Tf /var/www/ffone/current.next /var/www/ffone/current
+if systemctl is-enabled --quiet ffone-map.service; then
+    sudo systemctl restart ffone-map.service
+fi
 echo "Published $revision to $release"

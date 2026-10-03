@@ -1,0 +1,17 @@
+[Unit]
+Description=FFOne public map data
+After=network.target
+
+[Service]
+User=user1
+WorkingDirectory=/opt/FFOneWeb
+ExecStart=/opt/ffone-node/bin/node /opt/FFOneWeb/deploy/map-api.mjs
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
