@@ -24,4 +24,4 @@ else
     sudo cp "$config.before-map" "$config"
     exit 1
 fi
-curl --fail --silent http://127.0.0.1:8890/players
+curl --fail --silent --retry 5 --retry-connrefused --retry-delay 1 http://127.0.0.1:8890/players
